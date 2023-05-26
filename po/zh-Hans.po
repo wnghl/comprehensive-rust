@@ -90,7 +90,7 @@ msgstr ""
 
 #: src/SUMMARY.md:27
 msgid "Scalar Types"
-msgstr ""
+msgstr "标量类型"
 
 #: src/SUMMARY.md:28
 msgid "Compound Types"
@@ -2002,15 +2002,13 @@ msgstr ""
 
 #: src/hello-world.md:1
 msgid "# Hello World!"
-msgstr "# Hello World!"
+msgstr ""
 
 #: src/hello-world.md:3
 msgid ""
 "Let us jump into the simplest possible Rust program, a classic Hello World\n"
 "program:"
 msgstr ""
-"让我们进入最简单的Rust程序，一个经典的Hello World\n"
-"程序:"
 
 #: src/hello-world.md:6
 msgid ""
@@ -2020,16 +2018,10 @@ msgid ""
 "}\n"
 "```"
 msgstr ""
-"```rust,editable\n"
-"fn main() {\n"
-"    println!(\"Hello 🌍!\");\n"
-"}\n"
-"```"
-
 
 #: src/hello-world.md:12
 msgid "What you see:"
-msgstr "你看到的:"
+msgstr ""
 
 #: src/hello-world.md:14
 msgid ""
@@ -2039,11 +2031,6 @@ msgid ""
 "* Rust has hygienic macros, `println!` is an example of this.\n"
 "* Rust strings are UTF-8 encoded and can contain any Unicode character."
 msgstr ""
-"*函数以“fn”开头。\n" 
-"*像C和c++一样，块由花括号分隔。\n" 
-"* main函数是程序的入口。\n" 
-"* Rust有卫生宏(hygienic macros)，' println!’就是一个例子。\n" 
-"* Rust字符串是UTF-8编码的，可以包含任何Unicode字符。"
 
 #: src/hello-world.md:22
 msgid ""
@@ -2051,8 +2038,7 @@ msgid ""
 "see\n"
 "a ton of it over the next four days so we start small with something "
 "familiar."
-msgstr "这张幻灯片试图让学生们熟悉Rust代码。在接下来的四天里，他们会看到很多Rust代码, 所以我们从一些熟悉的东西开始。"
-
+msgstr ""
 
 #: src/hello-world.md:27
 msgid ""
@@ -2073,10 +2059,6 @@ msgid ""
 "  [partially hygienic](https://veykril.github.io/tlborm/decl-macros/minutiae/"
 "hygiene.html)."
 msgstr ""
-"* Rust非常像C/C++/Java的其他传统语言。它是指令式语言(不是函数式语言)，而且除非绝对必要，它不会尝试重新发明新的概念。\n"
-"* Rust是一种现代编程语言，它完全支持Unicode等特性。\n"
-"* 当你想要有一个可变数量的参数（没有函数[重载](basic-syntax/functions-interlude.md)）时，Rust使用宏。\n"
-"* 宏是“卫生的”意味着它们不会意外地从使用它们的作用域中捕获标识符。Rust的宏实际上只是[部分卫生](https://veykril.github.io/tlborm/decl-macros/minutiae/hygiene.html)" 
 
 #: src/hello-world/small-example.md:1
 msgid "# Small Example"
@@ -2352,7 +2334,7 @@ msgstr ""
 
 #: src/basic-syntax/scalar-types.md:1
 msgid "# Scalar Types"
-msgstr ""
+msgstr "# 标量类型"
 
 #: src/basic-syntax/scalar-types.md:3
 msgid ""
@@ -2372,10 +2354,25 @@ msgid ""
 "| Booleans               | `bool`                                     | "
 "`true`, `false`               |"
 msgstr ""
+"|                        | 类型                                     | "
+"字面量                      |\n"
+"|------------------------|--------------------------------------------|-------------------------------|\n"
+"| 有符号整数              | `i8`, `i16`, `i32`, `i64`, `i128`, `isize` | "
+"`-10`, `0`, `1_000`, `123i64` |\n"
+"| 无符号整数              | `u8`, `u16`, `u32`, `u64`, `u128`, `usize` | `0`, "
+"`123`, `10u16`           |\n"
+"| 浮点数                 | `f32`, `f64`                               | "
+"`3.14`, `-10.0e20`, `2f32`    |\n"
+"| 字符串                 | `&str`                                     | "
+"`\"foo\"`, `\"two\\nlines\"`       |\n"
+"| Unicode 标量类型       | `char`                                     | "
+"`'a'`, `'α'`, `'∞'`           |\n"
+"| 布尔值                 | `bool`                                     | "
+"`true`, `false`               |"
 
 #: src/basic-syntax/scalar-types.md:12
 msgid "The types have widths as follows:"
-msgstr ""
+msgstr "各类型占用的空间为："
 
 #: src/basic-syntax/scalar-types.md:14
 msgid ""
@@ -2383,11 +2380,14 @@ msgid ""
 "* `isize` and `usize` are the width of a pointer,\n"
 "* `char` is 32 bit wide,\n"
 "* `bool` is 8 bit wide."
-msgstr ""
+msgstr "* `iN`, `uN` 和 `fN` 占用 _N_ 位，\n"
+"* `isize` 和 `usize` 占用一个指针大小的空间，\n"
+"* `char` 占用 32 位空间，\n"
+"* `bool` 占用 8 位空间。"
 
 #: src/basic-syntax/scalar-types.md:21
 msgid "There are a few syntaxes which are not shown above:"
-msgstr ""
+msgstr "上表中还有一些未提及的语法："
 
 #: src/basic-syntax/scalar-types.md:23
 msgid ""
@@ -2413,6 +2413,25 @@ msgid ""
 "  }\n"
 "  ```"
 msgstr ""
+"- 原始字符串可在创建 `&str` 时禁用转义："
+"`r\"\\n\"\n"
+"  == \"\\\\\\\\n\"`。可以在外层引号两侧添加相同数量的 `#`，以在字符串中嵌入双引号：\n"
+"\n"
+"  ```rust,editable\n"
+"  fn main() {\n"
+"      println!(r#\"<a href=\"link.html\">link</a>\"#);\n"
+"      println!(\"<a href=\\\"link.html\\\">link</a>\");\n"
+"  }\n"
+"  ```\n"
+"\n"
+"- 字节串可以用于直接创建 `&[u8]` 类型的值：\n"
+"\n"
+"  ```rust,editable\n"
+"  fn main() {\n"
+"      println!(\"{:?}\", b\"abc\");\n"
+"      println!(\"{:?}\", &[97, 98, 99]);\n"
+"  }\n"
+"  ```"
 
 #: src/basic-syntax/compound-types.md:1
 msgid "# Compound Types"
